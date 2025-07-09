@@ -1,6 +1,5 @@
 const path = require("path");
 
-
 // BaseName
 console.log(path.basename(__filename));
 

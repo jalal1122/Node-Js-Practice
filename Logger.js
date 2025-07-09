@@ -1,4 +1,3 @@
-const { log } = require("console");
 const eventEmitter = require("events");
 const uuid = require("uuid");
 

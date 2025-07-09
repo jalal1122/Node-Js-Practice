@@ -8,9 +8,10 @@ const eventsModule = new EventsModule();
 
 // event listener for the 'event' event
 eventsModule.on("event", () => {
-  console.log("event triggered");
+  // console.log("event triggered");
+  console.log("Event triggered successfully!");
+  
 });
 
 // event trigger
 eventsModule.emit("event");
-
