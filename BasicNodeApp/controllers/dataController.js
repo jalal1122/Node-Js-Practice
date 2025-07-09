@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const middlewareFunc = require("../middleware/middleware.js");
 
 // This function handles the home route and serves the index.html file.
 // If the file is not found, it serves a 404.html file.
@@ -58,6 +59,8 @@ const apiRoute = async (req, res) => {
 };
 
 const dynamicPathHandling = async (req, res) => {
+  middlewareFunc(req, res, () => {});
+
   const filepath = path.join(
     __dirname,
     "..",
@@ -107,5 +110,5 @@ module.exports = {
   homeRoute,
   aboutRoute,
   apiRoute,
-  dynamicPathHandling
+  dynamicPathHandling,
 };

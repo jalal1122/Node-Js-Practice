@@ -10,3 +10,15 @@ class Logger extends eventEmitter {
     this.emit("log", { id, message });
   }
 }
+
+// create an instance of the Logger
+const logger = new Logger();
+
+// event listener for the 'log' event
+logger.on("log", (data) => {
+  console.log(`Log ID: ${data.id}, Message: ${data.message}`);
+});
+
+logger.log("This is a log message");
+
+module.exports = Logger;
