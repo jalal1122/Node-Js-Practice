@@ -11,17 +11,17 @@ const {
 const Port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-  if (req.url === "/") {
-    homeRoute(req, res);
-  }
+  // if (req.url === "/") {
+  //   homeRoute(req, res);
+  // }
 
-  if (req.url === "/about") {
-    aboutRoute(req, res);
-  }
+  // if (req.url === "/about") {
+  //   aboutRoute(req, res);
+  // }
 
-  if (req.url === "/api/users") {
-    apiRoute(req, res);
-  }
+  // if (req.url === "/api/users") {
+  //   apiRoute(req, res);
+  // }
 
   dynamicPathHandling(req, res);
 });

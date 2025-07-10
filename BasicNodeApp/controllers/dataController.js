@@ -86,21 +86,32 @@ const dynamicPathHandling = async (req, res) => {
       break;
   }
 
-  try {
-    const data = await fs.promises.readFile(filepath);
-    res.writeHead(200, { "Content-Type": contentType });
-    res.end(data);
-  } catch (err) {
-    if (err.code === "ENOENT") {
-      try {
-        const data404 = await fs.promises.readFile(
-          path.join(__dirname, "..", "public", "404.html")
-        );
-        res.writeHead(404, { "Content-Type": "text/html" });
-        res.end(data404);
-      } catch (err404) {
-        res.writeHead(500, { "Content-Type": "text/plain" });
-        res.end("Internal Server Error");
+  if (!fileExt) {
+    const users = [
+      { name: "John Doe", age: 30 },
+      { name: "Jane Smith", age: 25 },
+      { name: "Alice Johnson", age: 28 },
+    ];
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(users))
+  } else {
+    try {
+      const data = await fs.promises.readFile(filepath);
+      res.writeHead(200, { "Content-Type": contentType });
+      res.end(data);
+    } catch (err) {
+      if (err.code === "ENOENT") {
+        try {
+          const data404 = await fs.promises.readFile(
+            path.join(__dirname, "..", "public", "404.html")
+          );
+          res.writeHead(404, { "Content-Type": "text/html" });
+          res.end(data404);
+        } catch (err404) {
+          res.writeHead(500, { "Content-Type": "text/plain" });
+          res.end("Internal Server Error");
+        }
       }
     }
   }
